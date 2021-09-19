@@ -6,7 +6,7 @@ import com.videos.persistence.UsersRepository;
 import com.videos.views.FieldsView;
 import com.videos.views.MessageView;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class CreateVideoController extends Controller {
     private Video createVideo() {
         String url = new FieldsView().read(MessageView.READ_URL.getMessage());
         String title = new FieldsView().read(MessageView.READ_TITLE.getMessage());
-        String registryDate = LocalDate.now().toString();
+        LocalDateTime registryDate = LocalDateTime.now();
         String allTags = new FieldsView().read(MessageView.READ_TAG.getMessage());
         List<String> tags = this.getTagList(allTags);
         return new Video(url, title, registryDate, tags);

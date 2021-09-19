@@ -1,5 +1,6 @@
 package com.videos.models;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,10 +11,10 @@ public class User {
     private String name;
     private String surname;
     private String password;
-    private String registryDate;
+    private LocalDateTime registryDate;
     private List<Video> videos;
 
-    public User(String name, String surname, String password, String registryDate) {
+    public User(String name, String surname, String password, LocalDateTime registryDate) {
         this.id = numUsers;
         this.name = name;
         this.surname = surname;
@@ -32,7 +33,13 @@ public class User {
     }
 
     public List<Video> getVideos() {
+        this.updateStateVideo();
         return this.videos;
+    }
+    private void updateStateVideo(){
+        for (int i = 0; i < this.videos.size(); i++) {
+            this.videos.get(i).setStateVideo();
+        }
     }
 
     public boolean isVideoListEmpty() {

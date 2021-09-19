@@ -7,7 +7,7 @@ import com.videos.persistence.UsersRepository;
 import com.videos.views.FieldsView;
 import com.videos.views.MessageView;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class CreateUserController extends Controller {
 
@@ -28,7 +28,7 @@ public class CreateUserController extends Controller {
         String name = new FieldsView().read(MessageView.READ_NAME.getMessage());
         String surname = new FieldsView().read(MessageView.READ_SURNAME.getMessage());
         String password = new FieldsView().read(MessageView.READ_PASSWORD.getMessage());
-        String registryDate = LocalDate.now().toString();
+        LocalDateTime registryDate = LocalDateTime.now();
         return new User(name, surname, password, registryDate);
     }
 }

@@ -25,7 +25,7 @@ public class SeeVideosController extends Controller {
     }
 
     private void showVideos(User user){
-        for (Video video : usersRepository.getVideos(user.getId())) {
+        for (Video video : this.usersRepository.getVideos(user.getId())) {
             new SeeVideosView().writeln(video.toString());
         }
     }

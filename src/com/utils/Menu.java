@@ -20,6 +20,10 @@ public class Menu extends WithConsoleView {
                 commands.add(this.commandSet.get(i));
             }
         }
+        return commands.get(this.getOption(commands));
+    }
+
+    private int getOption(ArrayList<Command> commands) {
         boolean error;
         int option;
         do {
@@ -34,7 +38,7 @@ public class Menu extends WithConsoleView {
                 this.console.writeln(Menu.OPTION_ERROR + commands.size());
             }
         } while (error);
-        return commands.get(option);
+        return option;
     }
 
 }

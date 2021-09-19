@@ -21,7 +21,7 @@ public class ChooseUserController extends Controller {
     @Override
     public void control() {
         this.showUsers();
-        ActiveUser.set(usersRepository.get(this.chooseId()));
+        ActiveUser.set(usersRepository.getUserById(this.chooseId()));
     }
 
     private void showUsers(){
@@ -32,6 +32,6 @@ public class ChooseUserController extends Controller {
 
     private int chooseId(){
         return new ChooseUserView()
-                .read(MessageView.CHOOSE_ID_USER.getMessage(), this.usersRepository.getUsers().size());
+                .read(MessageView.CHOOSE_ID_USER.getMessage(), this.usersRepository.getSizeUsers());
     }
 }

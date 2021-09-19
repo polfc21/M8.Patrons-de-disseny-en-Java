@@ -26,11 +26,15 @@ public class UsersRepository {
         return this.users;
     }
 
+    public int getSizeUsers() {
+        return this.users.size();
+    }
+
     public List<Video> getVideos(int id) {
         return this.users.get(id-1).getVideos();
     }
 
-    public User get(int id) {
+    public User getUserById(int id) {
         return this.users.get(id-1);
     }
 

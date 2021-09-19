@@ -2,10 +2,6 @@ package com.videos.views;
 
 public enum MessageView {
 
-    START_APP("-------------------- VIDEO APLICACIÓ --------------------"),
-    SEPARATOR("---------------------------------------------------------"),
-    MAIN_MENU("-------------------- MENÚ PRINCIPAL ---------------------"),
-    USER_MENU("-------------------- MENÚ D'USUARIS ---------------------"),
     CREATE_USER("Crear un usuari"),
     CHANGE_USER_MENU("Menú d'usuaris"),
     READ_NAME("Escriu el nom de l'usuari: "),

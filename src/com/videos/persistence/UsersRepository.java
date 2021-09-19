@@ -31,7 +31,7 @@ public class UsersRepository {
     }
 
     public List<Video> getVideos(int id) {
-        return this.users.get(id-1).getVideos();
+        return this.getUserById(id-1).getVideos();
     }
 
     public User getUserById(int id) {
@@ -43,7 +43,7 @@ public class UsersRepository {
     }
 
     public void add(Video video, int id){
-        this.users.get(id-1).add(video);
+        this.getUserById(id-1).add(video);
     }
 
 }

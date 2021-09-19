@@ -1,9 +1,9 @@
-package com.videos.views.mainmenu;
+package com.videos.views;
 
 import com.utils.EmptyFieldsException;
 import com.utils.WithConsoleView;
 
-public class CreateUserView extends WithConsoleView {
+public class FieldsView extends WithConsoleView {
 
     public String read(String message) {
         String input = "";
@@ -21,5 +21,4 @@ public class CreateUserView extends WithConsoleView {
         } while (!correctField);
         return input;
     }
-
 }

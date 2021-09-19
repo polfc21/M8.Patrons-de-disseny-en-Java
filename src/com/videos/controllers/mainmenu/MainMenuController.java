@@ -2,12 +2,11 @@ package com.videos.controllers.mainmenu;
 
 import com.utils.Command;
 import com.utils.Menu;
-import com.videos.controllers.usermenu.ChooseUserController;
+
 import com.videos.controllers.Controller;
 import com.videos.models.Session;
 import com.videos.persistence.UsersRepository;
 import com.videos.views.mainmenu.ChangeMenuCommand;
-import com.videos.views.usermenu.ChooseUserCommand;
 import com.videos.views.mainmenu.CreateUserCommand;
 import com.videos.views.mainmenu.ExitAppCommand;
 

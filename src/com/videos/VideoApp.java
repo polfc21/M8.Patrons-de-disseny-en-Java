@@ -25,7 +25,7 @@ public class VideoApp {
     void execute() {
         Controller controller;
         do {
-            controller = this.controllers.get(this.session.getValueState());
+            controller = this.controllers.get(this.session.getStateValue());
             if (controller != null) {
                 controller.control();
             }

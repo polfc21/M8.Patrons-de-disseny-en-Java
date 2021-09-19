@@ -19,6 +19,6 @@ public class ChangeMenuController extends Controller {
     }
 
     public boolean isUsersListEmpty(){
-        return this.usersRepository.getUsers().size() == 0;
+        return this.usersRepository.getSizeUsers() == 0;
     }
 }

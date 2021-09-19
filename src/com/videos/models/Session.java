@@ -4,26 +4,26 @@ import com.videos.types.StateValue;
 
 public class Session {
 
-    private State state;
+    private StateValue stateValue;
 
     public Session() {
-        this.state = new State();
+        this.stateValue = StateValue.MAIN_MENU;
     }
 
     public void next() {
-        this.state.next();
+        this.stateValue = StateValue.values()[this.stateValue.ordinal()+1];
     }
 
     public void previous() {
-        this.state.previous();
+        this.stateValue = StateValue.values()[this.stateValue.ordinal()-1];
     }
 
     public void exit() {
-        this.state.exit();
+        this.stateValue = StateValue.EXIT;
     }
 
-    public StateValue getValueState() {
-        return this.state.getStateValue();
+    public StateValue getStateValue() {
+        return this.stateValue;
     }
 
 

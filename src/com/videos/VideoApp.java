@@ -2,6 +2,7 @@ package com.videos;
 
 import com.videos.controllers.Controller;
 import com.videos.controllers.mainmenu.MainMenuController;
+import com.videos.controllers.usermenu.player.PlayerController;
 import com.videos.controllers.usermenu.UserMenuController;
 import com.videos.models.Session;
 import com.videos.types.StateValue;
@@ -19,6 +20,7 @@ public class VideoApp {
         this.controllers = new HashMap<>();
         this.controllers.put(StateValue.MAIN_MENU, new MainMenuController(this.session));
         this.controllers.put(StateValue.USER_MENU, new UserMenuController(this.session));
+        this.controllers.put(StateValue.PLAYER, new PlayerController(this.session));
         this.controllers.put(StateValue.EXIT, null);
     }
 

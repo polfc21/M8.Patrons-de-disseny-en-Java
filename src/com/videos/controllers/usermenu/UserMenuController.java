@@ -28,8 +28,8 @@ public class UserMenuController extends Controller {
     private ChooseVideoController chooseVideoController;
     private ChooseVideoCommand chooseVideoCommand;
 
-    private PlayVideoController playVideoController;
-    private PlayVideoCommand playVideoCommand;
+    private ChangePlayerController changePlayerController;
+    private ChangePlayerCommand changePlayerCommand;
 
     private ExitUserMenuController exitUserMenuController;
     private ExitUserMenuCommand exitUserMenuCommand;
@@ -58,9 +58,9 @@ public class UserMenuController extends Controller {
         this.chooseVideoCommand = new ChooseVideoCommand();
         this.controllers.put(this.chooseVideoCommand, this.chooseVideoController);
 
-        this.playVideoController = new PlayVideoController(this.session);
-        this.playVideoCommand = new PlayVideoCommand();
-        this.controllers.put(this.playVideoCommand, this.playVideoController);
+        this.changePlayerController = new ChangePlayerController(this.session);
+        this.changePlayerCommand = new ChangePlayerCommand();
+        this.controllers.put(this.changePlayerCommand, this.changePlayerController);
 
         this.exitUserMenuController = new ExitUserMenuController(this.session);
         this.exitUserMenuCommand = new ExitUserMenuCommand();
@@ -75,7 +75,7 @@ public class UserMenuController extends Controller {
         this.createVideoCommand.setActive(this.createVideoController.isChoosenUser());
         this.seeVideosCommand.setActive(this.seeVideosController.isChoosenUser() && !this.seeVideosController.isVideosListEmpty());
         this.chooseVideoCommand.setActive(this.chooseVideoController.isChoosenUser() && !this.chooseVideoController.isVideosListEmpty());
-        this.playVideoCommand.setActive(this.playVideoController.isChoosenVideo());
+        this.changePlayerCommand.setActive(this.changePlayerController.isChoosenVideo());
         this.exitUserMenuCommand.setActive(true);
         this.controllers.get(this.menu.execute()).control();
     }

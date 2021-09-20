@@ -27,6 +27,10 @@ public class Video {
         return this.url;
     }
 
+    public int getDurada() {
+        return this.durada;
+    }
+
     public void setStateVideo(){
         long diference = ChronoUnit.MINUTES.between(this.registryDate, LocalDateTime.now());
         if (diference < 1) {

@@ -1,12 +1,12 @@
-package com.videos.views.usermenu;
+package com.videos.views.usermenu.player;
 
 import com.utils.Command;
 import com.videos.views.MessageView;
 
-public class PlayVideoCommand extends Command {
+public class StopCommand extends Command {
 
-    public PlayVideoCommand() {
-        super(MessageView.PLAY_VIDEO.getMessage());
+    public StopCommand() {
+        super(MessageView.STOP_VIDEO.getMessage());
     }
 
     @Override

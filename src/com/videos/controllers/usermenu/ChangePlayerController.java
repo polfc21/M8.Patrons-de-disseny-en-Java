@@ -4,15 +4,15 @@ import com.videos.controllers.Controller;
 import com.videos.models.ActiveVideo;
 import com.videos.models.Session;
 
-public class PlayVideoController extends Controller {
+public class ChangePlayerController extends Controller {
 
-    public PlayVideoController(Session session) {
+    public ChangePlayerController(Session session) {
         super(session);
     }
 
     @Override
     public void control() {
-        System.out.println(ActiveVideo.instance().toString());
+        this.session.next();
     }
 
     public boolean isChoosenVideo() {

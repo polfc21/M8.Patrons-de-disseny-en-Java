@@ -1,19 +1,17 @@
 package com.videos.controllers.usermenu;
 
 import com.videos.controllers.Controller;
-import com.videos.models.ActiveUser;
-import com.videos.models.Session;
-import com.videos.models.User;
-import com.videos.models.Video;
+import com.videos.models.*;
 import com.videos.persistence.UsersRepository;
-import com.videos.views.usermenu.SeeVideosView;
+import com.videos.views.MessageView;
+import com.videos.views.usermenu.ChooseVideoView;
 
-public class SeeVideosController extends Controller {
+public class ChooseVideoController extends Controller {
 
-    private User activeUser;
     private UsersRepository usersRepository;
+    private User activeUser;
 
-    public SeeVideosController(Session session, UsersRepository usersRepository) {
+    public ChooseVideoController(Session session, UsersRepository usersRepository) {
         super(session);
         this.usersRepository = usersRepository;
     }
@@ -22,13 +20,21 @@ public class SeeVideosController extends Controller {
     public void control() {
         this.activeUser = ActiveUser.instance();
         this.showVideos();
+        String url = this.chooseUrl();
+        ActiveVideo.set(this.usersRepository.getVideoByUrl(url, this.activeUser.getId()));
     }
 
     private void showVideos(){
         int id = this.activeUser.getId();
         for (Video video : this.usersRepository.getVideos(id)) {
-            new SeeVideosView().writeln(video.toString());
+            new ChooseVideoView().writeln(video.toString());
         }
+    }
+
+    private String chooseUrl(){
+        int id = this.activeUser.getId();
+        String[] urls = this.usersRepository.getUrls(id);
+        return new ChooseVideoView().read(MessageView.CHOOSE_URL_VIDEO.getMessage(), urls);
     }
 
     public boolean isChoosenUser() {
@@ -38,6 +44,4 @@ public class SeeVideosController extends Controller {
     public boolean isVideosListEmpty() {
         return ActiveUser.isVideosListEmpty();
     }
-
-
 }

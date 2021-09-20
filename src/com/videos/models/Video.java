@@ -12,13 +12,19 @@ public class Video {
     private String title;
     private LocalDateTime registryDate;
     private List<String> tags;
+    private int durada;
     private StateVideo stateVideo;
 
-    public Video(String url, String title, LocalDateTime registryDate, List<String> tags){
+    public Video(String url, String title, LocalDateTime registryDate, List<String> tags, int durada){
         this.url = url;
         this.title = title;
         this.registryDate = registryDate;
         this.tags = tags;
+        this.durada = durada;
+    }
+
+    public String getUrl() {
+        return this.url;
     }
 
     public void setStateVideo(){
@@ -37,10 +43,10 @@ public class Video {
         return "Video{" +
                 "url='" + url + '\'' +
                 ", title='" + title + '\'' +
-                ", registryDate='" + registryDate + '\'' +
+                ", registryDate=" + registryDate +
                 ", tags=" + tags +
+                ", durada=" + durada +
                 ", stateVideo=" + stateVideo +
                 '}';
     }
-
 }

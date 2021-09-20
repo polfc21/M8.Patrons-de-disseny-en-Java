@@ -7,10 +7,7 @@ import com.videos.controllers.Controller;
 import com.videos.models.Session;
 import com.videos.persistence.UsersRepository;
 
-import com.videos.views.usermenu.ChooseUserCommand;
-import com.videos.views.usermenu.CreateVideoCommand;
-import com.videos.views.usermenu.ExitUserMenuCommand;
-import com.videos.views.usermenu.SeeVideosCommand;
+import com.videos.views.usermenu.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,8 +25,14 @@ public class UserMenuController extends Controller {
     private SeeVideosController seeVideosController;
     private SeeVideosCommand seeVideosCommand;
 
-    private ExitUserMenuCommand exitUserMenuCommand;
+    private ChooseVideoController chooseVideoController;
+    private ChooseVideoCommand chooseVideoCommand;
+
+    private PlayVideoController playVideoController;
+    private PlayVideoCommand playVideoCommand;
+
     private ExitUserMenuController exitUserMenuController;
+    private ExitUserMenuCommand exitUserMenuCommand;
 
     private Menu menu;
     private UsersRepository usersRepository;
@@ -38,18 +41,31 @@ public class UserMenuController extends Controller {
         super(session);
         this.usersRepository = UsersRepository.instance();
         this.controllers = new HashMap<>();
+
         this.chooseUserController = new ChooseUserController(this.session, this.usersRepository);
         this.chooseUserCommand = new ChooseUserCommand();
         this.controllers.put(this.chooseUserCommand, this.chooseUserController);
+
         this.createVideoController = new CreateVideoController(this.session, this.usersRepository);
         this.createVideoCommand = new CreateVideoCommand();
         this.controllers.put(this.createVideoCommand, this.createVideoController);
+
         this.seeVideosController = new SeeVideosController(this.session, this.usersRepository);
         this.seeVideosCommand = new SeeVideosCommand();
         this.controllers.put(this.seeVideosCommand, this.seeVideosController);
+
+        this.chooseVideoController = new ChooseVideoController(this.session, this.usersRepository);
+        this.chooseVideoCommand = new ChooseVideoCommand();
+        this.controllers.put(this.chooseVideoCommand, this.chooseVideoController);
+
+        this.playVideoController = new PlayVideoController(this.session);
+        this.playVideoCommand = new PlayVideoCommand();
+        this.controllers.put(this.playVideoCommand, this.playVideoController);
+
         this.exitUserMenuController = new ExitUserMenuController(this.session);
         this.exitUserMenuCommand = new ExitUserMenuCommand();
         this.controllers.put(this.exitUserMenuCommand, this.exitUserMenuController);
+
         this.menu = new Menu(this.controllers.keySet());
     }
 
@@ -58,6 +74,8 @@ public class UserMenuController extends Controller {
         this.chooseUserCommand.setActive(true);
         this.createVideoCommand.setActive(this.createVideoController.isChoosenUser());
         this.seeVideosCommand.setActive(this.seeVideosController.isChoosenUser() && !this.seeVideosController.isVideosListEmpty());
+        this.chooseVideoCommand.setActive(this.chooseVideoController.isChoosenUser() && !this.chooseVideoController.isVideosListEmpty());
+        this.playVideoCommand.setActive(this.playVideoController.isChoosenVideo());
         this.exitUserMenuCommand.setActive(true);
         this.controllers.get(this.menu.execute()).control();
     }

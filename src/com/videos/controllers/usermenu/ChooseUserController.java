@@ -21,11 +21,11 @@ public class ChooseUserController extends Controller {
     @Override
     public void control() {
         this.showUsers();
-        ActiveUser.set(usersRepository.getUserById(this.chooseId()));
+        ActiveUser.set(this.usersRepository.getUserById(this.chooseId()));
     }
 
     private void showUsers(){
-        for (User user : usersRepository.getUsers()) {
+        for (User user : this.usersRepository.getUsers()) {
             new ChooseUserView().writeln(user.toString());
         }
     }

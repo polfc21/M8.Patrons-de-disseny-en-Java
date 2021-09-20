@@ -32,7 +32,8 @@ public class CreateVideoController extends Controller {
         LocalDateTime registryDate = LocalDateTime.now();
         String allTags = new FieldsView().read(MessageView.READ_TAG.getMessage());
         List<String> tags = this.getTagList(allTags);
-        return new Video(url, title, registryDate, tags);
+        int durada = new FieldsView().readInt(MessageView.READ_DURATION.getMessage());
+        return new Video(url, title, registryDate, tags, durada);
     }
 
     private List<String> getTagList(String allTags){

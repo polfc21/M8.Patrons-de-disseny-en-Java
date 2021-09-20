@@ -36,10 +36,29 @@ public class User {
         this.updateStateVideo();
         return this.videos;
     }
+
+    public Video getVideo(String url){
+        Video videoReturn = null;
+        for (Video video : this.videos) {
+            if (video.getUrl().equals(url)){
+                videoReturn = video;
+            }
+        }
+        return videoReturn;
+    }
+
     private void updateStateVideo(){
         for (int i = 0; i < this.videos.size(); i++) {
             this.videos.get(i).setStateVideo();
         }
+    }
+
+    public String[] getUrls(){
+        String[] urls = new String[this.videos.size()];
+        for(int i = 0; i < this.videos.size(); i++) {
+            urls[i] = this.videos.get(i).getUrl();
+        }
+        return urls;
     }
 
     public boolean isVideoListEmpty() {

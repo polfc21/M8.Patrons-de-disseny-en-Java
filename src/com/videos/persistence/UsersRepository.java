@@ -34,6 +34,14 @@ public class UsersRepository {
         return this.getUserById(id).getVideos();
     }
 
+    public String[] getUrls(int id) {
+        return this.getUserById(id).getUrls();
+    }
+
+    public Video getVideoByUrl(String url, int id) {
+        return this.getUserById(id).getVideo(url);
+    }
+
     public User getUserById(int id) {
         return this.users.get(id-1);
     }

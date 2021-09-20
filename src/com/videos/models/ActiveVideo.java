@@ -45,18 +45,6 @@ public class ActiveVideo {
 
     }
 
-    public static void isPlaying(){
-        try {
-            while (statusVideo == StatusVideo.PLAY){
-                actualDuration++;
-                controlDuration();
-                Thread.sleep(1000);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void controlDuration(){
         if (actualDuration == activeVideo.getDurada()){
             statusVideo = StatusVideo.STOP;
